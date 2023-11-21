@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  mysql:
+    # DB 서비스
+    image: mysql:5.7
+    platform: linux/amd64
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      # MYSQL_USER: root
+      # MYSQL_PASSWORD: 1234
+      MYSQL_DATABASE: react
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - gyumpark-network
+
+  react:
+    # 프론트 서비스
+    build: ./front
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front:/var/front
+    networks:
+      - gyumpark-network
+
+  nestjs:
+    # 백엔드 서비스
+    build: ./back
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./back:/var/back
+    networks:
+      - gyumpark-network
+
+networks:
+  gyumpark-network:
+    driver: bridge
