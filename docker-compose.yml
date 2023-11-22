@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       # MYSQL_USER: root
       # MYSQL_PASSWORD: 1234
-      MYSQL_DATABASE: react
+      MYSQL_DATABASE: pomodotory
     ports:
       - "3306:3306"
     volumes:
