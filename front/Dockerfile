@@ -1,11 +1,10 @@
 FROM node:18-alpine
 
-RUN apk add --no-cache git
+COPY package*.json ./
+RUN npm install -g npm@latest
 
-COPY ./tools/start_react.sh /start_react.sh
-
-RUN chmod +x /start_react.sh
-
-CMD ["/bin/sh", "/start_react.sh"]
+COPY tsconfig.json ./
 
 EXPOSE 3000
+
+CMD ["npm", "run", "start"]
