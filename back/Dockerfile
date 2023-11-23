@@ -1,9 +1,11 @@
 FROM node:18-alpine
 
-COPY package*.json ./
+WORKDIR /var/back
+
+COPY package*.json .
 RUN npm install
 
-COPY tsconfig.json ./
+COPY tsconfig.json .
 
 EXPOSE 4000
 
