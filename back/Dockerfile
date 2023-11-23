@@ -5,6 +5,6 @@ RUN npm install
 
 COPY tsconfig.json ./
 
-CMD ["npm", "run", "start:dev"]
-
 EXPOSE 4000
+
+CMD ["npm", "run", "start:dev"]
