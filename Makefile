@@ -1,5 +1,5 @@
 DOCKER_COMPOSE_FILE = ./docker-compose.yml
-DOCKER_COMPOSE = docker-compose --file $(DOCKER_COMPOSE_FILE)
+DOCKER_COMPOSE = docker compose --file $(DOCKER_COMPOSE_FILE)
 
 all: up
 

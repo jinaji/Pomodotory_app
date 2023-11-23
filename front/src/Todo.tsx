@@ -12,9 +12,9 @@ export const Todo = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
 
   // REST API 테스트
-  useEffect(() => {
-    const res = axiosInstance.post("/todos", todos);
-  }, [todos]);
+  // useEffect(() => {
+  //   const res = axiosInstance.post("/todos", todos);
+  // }, [todos]);
 
   console.log(todos);
   return (
