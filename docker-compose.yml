@@ -1,23 +1,26 @@
 version: "3"
 
 services:
-  mysql:
+  mysql-db:
     # DB 서비스
     image: mysql:5.7
     platform: linux/amd64
     environment:
       MYSQL_ROOT_PASSWORD: root
-      # MYSQL_USER: root
-      # MYSQL_PASSWORD: 1234
       MYSQL_DATABASE: pomodotory
+      MYSQL_USER: test
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_HOST: "%"
+    expose:
+      - 3306
     ports:
       - "3306:3306"
     volumes:
-      - ./mysql:/var/lib/mysql
+      - /var/lib/mysql:/var/lib/mysql
     networks:
       - gyumpark-network
 
-  react:
+  react-app:
     # 프론트 서비스
     build: ./front
     ports:
@@ -27,15 +30,28 @@ services:
     networks:
       - gyumpark-network
 
-  nestjs:
+  nestjs-app:
     # 백엔드 서비스
     build: ./back
     ports:
       - "4000:4000"
+    environment:
+      TYPEORM_HOST: mysql-db
+      TYPEORM_PORT: 3306
+      TYPEORM_USERNAME: root
+      TYPEORM_PASSWORD: root
+      TYPEORM_DATABASE: pomodotory
+      TYPEORM_SYNCHRONIZE: "true"
+      TYPEORM_AUTOLOAD_ENTITIES: "true"
     volumes:
       - ./back:/var/back
     networks:
       - gyumpark-network
+    depends_on:
+      - mysql-db
+
+volumes:
+  mysql:
 
 networks:
   gyumpark-network:
