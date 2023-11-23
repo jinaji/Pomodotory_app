@@ -1,9 +1,9 @@
 FROM node:18-alpine
 
 COPY package*.json ./
-RUN npm install -g npm@latest
+RUN npm install react-scripts@5.0.1 --force
 
-COPY tsconfig.json ./
+COPY . .
 
 EXPOSE 3000
 
