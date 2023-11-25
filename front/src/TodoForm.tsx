@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TodoDTO } from "./Todo";
 import React, { Dispatch } from "react";
+import { axiosInstance } from "./axios";
 
 interface TodoFormProps {
   todo: TodoDTO[];
@@ -15,6 +16,10 @@ export const TodoForm = (props: TodoFormProps) => {
     const newTodo = { text, complete: false, createdAt: Date.now() / 1000 };
     if (text === "") return;
     props.setTodos((prevTodos: any) => [...prevTodos, newTodo]);
+    axiosInstance.post("/todos", newTodo);
+    // axiosInstance.get("/todos").then((res) => {
+    //   props.setTodos(res.data);
+    // });
     setText("");
   };
 
@@ -33,6 +38,7 @@ export const TodoForm = (props: TodoFormProps) => {
     props.setTodos((prevTodos: any) =>
       prevTodos.filter((todo: any) => createdAt !== todo.createdAt)
     );
+    axiosInstance.delete(`/todos/${createdAt}`);
   };
 
   return (

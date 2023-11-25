@@ -11,12 +11,24 @@ export interface TodoDTO {
 export const Todo = () => {
   const [todos, setTodos] = useState<TodoDTO[]>([]);
 
-  // REST API 테스트
+  // axiosInstance.get("/todos").then((res) => {
+  //   setTodos(res.data);
+  // });
+
   useEffect(() => {
-    const res = axiosInstance.post("/todos", todos).then((res) => {
-      console.log(res);
-    });
-  }, [todos]);
+    fetchTodos();
+  }, []);
+
+  const fetchTodos = async () => {
+    const res = await axiosInstance.get("/todos");
+    setTodos(res.data);
+  };
+
+  // useEffect(() => {
+  //   axiosInstance.get("/todos").then((res) => {
+  //     setTodos(res.data);
+  //   });
+  // }, []);
 
   return (
     <div className="bg-green-100 w-[30%] mx-auto col-span-1">
