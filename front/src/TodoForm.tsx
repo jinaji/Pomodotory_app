@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { Todo } from "./Todo";
+import { useState } from "react";
+import { TodoDTO } from "./Todo";
 import React, { Dispatch } from "react";
 
 interface TodoFormProps {
-  todo: Todo[];
-  setTodos: Dispatch<React.SetStateAction<Todo[]>>;
+  todo: TodoDTO[];
+  setTodos: Dispatch<React.SetStateAction<TodoDTO[]>>;
 }
 
 export const TodoForm = (props: TodoFormProps) => {
@@ -12,24 +12,26 @@ export const TodoForm = (props: TodoFormProps) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    const newTodo = { text, complete: false, id: Date.now() };
+    const newTodo = { text, complete: false, createdAt: Date.now() / 1000 };
     if (text === "") return;
     props.setTodos((prevTodos: any) => [...prevTodos, newTodo]);
     setText("");
   };
 
-  const handleCheck = (id: number) => {
+  const handleCheck = (createdAt: number) => {
     props.setTodos((prevTodos: any) =>
       prevTodos.map((todo: any, i: number) =>
-        id === todo.id ? { ...todo, complete: !todo.complete } : todo
+        createdAt === todo.createdAt
+          ? { ...todo, complete: !todo.complete }
+          : todo
       )
     );
-    console.log(props.todo, id);
+    console.log(props.todo, createdAt);
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (createdAt: number) => {
     props.setTodos((prevTodos: any) =>
-      prevTodos.filter((todo: any) => id !== todo.id)
+      prevTodos.filter((todo: any) => createdAt !== todo.createdAt)
     );
   };
 
@@ -47,7 +49,7 @@ export const TodoForm = (props: TodoFormProps) => {
       {props.todo.map((todo: any, index: number) => (
         <div key={index} className="flex flex-row">
           <button
-            onClick={() => handleCheck(todo.id)}
+            onClick={() => handleCheck(todo.createdAt)}
             className={`h-6 w-6 rounded-full shadow-xl ${
               todo.complete ? "bg-green-200" : "bg-white"
             } border-2 border-green-300 mb-2 ml-1 mr-2`}
@@ -58,7 +60,7 @@ export const TodoForm = (props: TodoFormProps) => {
             <p className="text-gray-400">{todo.text}</p>
           )}
           <button
-            onClick={() => handleDelete(todo.id)}
+            onClick={() => handleDelete(todo.createdAt)}
             className="mb-2 ml-auto mr-3"
           >
             X
