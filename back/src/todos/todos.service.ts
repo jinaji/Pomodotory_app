@@ -13,7 +13,7 @@ export class TodosService {
   ) {}
   private id = 0;
 
-  create(createTodoDto: CreateTodoDto) {
+  create(createTodoDto: CreateTodoDto[]) {
     const newTodo = this.todosRepository.create(createTodoDto);
     this.todosRepository.save(newTodo);
     console.log(newTodo);

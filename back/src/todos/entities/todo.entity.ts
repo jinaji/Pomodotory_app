@@ -10,4 +10,7 @@ export class TodoEntity {
 
   @Column()
   complete: boolean;
+
+  @Column()
+  createdAt: number;
 }
