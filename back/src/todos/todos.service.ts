@@ -11,12 +11,12 @@ export class TodosService {
     @InjectRepository(TodoEntity)
     private todosRepository: Repository<TodoEntity>,
   ) {}
-  private id = 0;
 
   create(createTodoDto: CreateTodoDto[]) {
     const newTodo = this.todosRepository.create(createTodoDto);
     this.todosRepository.save(newTodo);
     console.log(newTodo);
+    return 'This action adds a new todo';
   }
 
   findAll() {
