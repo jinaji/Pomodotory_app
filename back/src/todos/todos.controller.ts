@@ -31,13 +31,20 @@ export class TodosController {
     return this.todosService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-    return this.todosService.update(+id, updateTodoDto);
+  @Patch(':createdAt')
+  update(
+    @Param('createdAt') createdAt: string,
+    @Body() updateTodoDto: UpdateTodoDto,
+  ) {
+    return this.todosService.update(+createdAt, updateTodoDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.todosService.remove(+id);
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.todosService.remove(+id);
+
+  @Delete(':createdAt')
+  remove(@Param('createdAt') createdAt: string) {
+    return this.todosService.remove(+createdAt);
   }
 }

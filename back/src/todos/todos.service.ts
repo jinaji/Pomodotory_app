@@ -17,7 +17,6 @@ export class TodosService {
     const newTodo = this.todosRepository.create(createTodoDto);
     this.todosRepository.save(newTodo);
     console.log(newTodo);
-    return 'This action adds a new todo';
   }
 
   findAll() {
@@ -28,11 +27,16 @@ export class TodosService {
     this.todosRepository.findOne({ where: { id } });
   }
 
-  update(id: number, updateTodoDto: UpdateTodoDto) {
-    return `This action updates a #${id} todo`;
+  update(createdAt: number, updateTodoDto: UpdateTodoDto) {
+    if (updateTodoDto.complete === false) {
+      updateTodoDto.complete = true;
+    } else updateTodoDto.complete = false;
+    this.todosRepository.update({ createdAt }, updateTodoDto);
+    console.log(this.todosRepository.findOne({ where: { createdAt } }));
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} todo`;
+  remove(createdAt: number) {
+    console.log(this.todosRepository.findOne({ where: { createdAt } }));
+    this.todosRepository.delete({ createdAt });
   }
 }

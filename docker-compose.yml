@@ -35,14 +35,6 @@ services:
     build: ./back
     ports:
       - "4000:4000"
-    environment:
-      TYPEORM_HOST: mysql-db
-      TYPEORM_PORT: 3306
-      TYPEORM_USERNAME: root
-      TYPEORM_PASSWORD: root
-      TYPEORM_DATABASE: pomodotory
-      TYPEORM_SYNCHRONIZE: "true"
-      TYPEORM_AUTOLOAD_ENTITIES: "true"
     volumes:
       - ./back:/var/back
     networks:
