@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { axiosInstance } from "../../axios";
 import { TodoForm } from "./TodoForm";
-import { axiosInstance } from "./axios";
 
 export interface TodoDTO {
   text: string;
@@ -24,14 +24,8 @@ export const Todo = () => {
     setTodos(res.data);
   };
 
-  // useEffect(() => {
-  //   axiosInstance.get("/todos").then((res) => {
-  //     setTodos(res.data);
-  //   });
-  // }, []);
-
   return (
-    <div className="bg-green-100 w-[30%] mx-auto col-span-1">
+    <div className="todo-container">
       <TodoForm todo={todos} setTodos={setTodos} />
     </div>
   );

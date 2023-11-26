@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../../styles/Pomodoro.css";
 
 export const Pomodoro = () => {
   const [time, setTime] = useState(5);
@@ -59,16 +60,16 @@ export const Pomodoro = () => {
   console.log(time);
 
   return (
-    <div className="pomodoro-containner col-span-1 w-[30%] bg-blue-100 mx-auto">
+    <div className="pomodoro-container">
       <div className=" flex flex-col block">
         <div>
-          <h1 className="text-center">POMODOTORY</h1>
+          <h1 className="pomodoro-title">POMODOTORY</h1>
         </div>
 
         <div className="time-section mx-auto">
-          <p className="time-description">Time to {work ? "work" : "rest"}</p>
+          <p className="time-to">Time to {work ? "work" : "rest"}</p>
 
-          <p className="time text-center">
+          <p className="timer text-center">
             {Math.floor(time / 60) < 10
               ? `0${Math.floor(time / 60)}`
               : Math.floor(time / 60)}{" "}
@@ -78,21 +79,21 @@ export const Pomodoro = () => {
 
         {doneCycle()}
 
-        <div className="button-section justify-items-stretch space-x-2 mx-auto">
+        <div className="button-section justify-items-stretch space-x-5 mx-auto">
           <button
-            className="start-button"
+            className="pomodoro-button"
             onClick={() => handleButton("start")}
           >
             Start
           </button>
           <button
-            className="pause-button"
+            className="pomodoro-button"
             onClick={() => handleButton("pause")}
           >
             Pause
           </button>
           <button
-            className="reset-button"
+            className="pomodoro-button"
             onClick={() => handleButton("reset")}
           >
             Reset

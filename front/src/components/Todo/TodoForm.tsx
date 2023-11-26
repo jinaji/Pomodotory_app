@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TodoDTO } from "./Todo";
 import React, { Dispatch } from "react";
-import { axiosInstance } from "./axios";
+import { axiosInstance } from "../../axios";
 
 interface TodoFormProps {
   todo: TodoDTO[];
@@ -31,7 +31,7 @@ export const TodoForm = (props: TodoFormProps) => {
           : todo
       )
     );
-    console.log(props.todo, createdAt);
+    axiosInstance.patch(`/todos/${createdAt}`);
   };
 
   const handleDelete = (createdAt: number) => {
@@ -42,15 +42,15 @@ export const TodoForm = (props: TodoFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col">
+    <form onSubmit={handleSubmit} className="flex-col">
       <input
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        className=""
+        className="todo-input"
       />
-      <button type="submit" className="mt-2">
-        Add Todo
+      <button type="submit" className="todo-input-button">
+        +
       </button>
       {props.todo.map((todo: any, index: number) => (
         <div key={index} className="flex flex-row">
