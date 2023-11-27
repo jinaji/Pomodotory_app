@@ -3,6 +3,7 @@ import { Pomodoro } from "./Pomodoro/Pomodoro";
 import { Todo } from "./Todo/Todo";
 
 export const Main = () => {
+  const [input, setInput] = useState("");
   const [user, setUser] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -14,17 +15,24 @@ export const Main = () => {
   }, []);
 
   return (
-    <div className="Main mx-auto">
-      <div className="grid-cols-2 gird-rows-2 gap-4 flex bg-[#B5815B]">
+    <div className="Main mx-auto my-auto">
+      <div className="grid-cols-2 gird-rows-1 flex">
         {isModalOpen && (
           <div className="absloute w-[420px] h-[240px] bg-blue-500 z-10 ">
             <input
-              value={user}
-              onSubmit={() => {
-                setUser(user);
-                window.localStorage.setItem(user, user);
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            ></input>
+            <button
+              onClick={() => {
+                localStorage.setItem("user", input);
+                setUser(input);
+                setIsModalOpen(false);
               }}
-            ></input>{" "}
+            >
+              Button
+            </button>
           </div>
         )}
         <Pomodoro />

@@ -60,10 +60,10 @@ export const Pomodoro = () => {
   console.log(time);
 
   return (
-    <div className="pomodoro-container">
+    <div className="content-container">
       <div className=" flex flex-col block">
         <div>
-          <h1 className="pomodoro-title">POMODOTORY</h1>
+          <h1 className="content-title">POMODOTORY</h1>
         </div>
 
         <div className="time-section mx-auto">

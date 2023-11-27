@@ -1,13 +1,17 @@
-.todo-container {
-  @apply bg-[#F4C58D] rounded-[50px] col-span-1 mx-auto  w-[463px] h-[617px] left-[115px] top-[108px] shadow-xl;
-}
-
 .todo-input {
-  @apply flex-col w-[315px] h-[35px] drop-shadow-xl rounded-full;
+  @apply w-[315px] h-[35px] drop-shadow-xl rounded-full  bg-white/90 mx-3;
 }
 
 .todo-input-button {
-  @apply w-[46px] h-[36px] bg-[#B5815B] rounded-full text-white font-bold text-[46px];
+  @apply w-[46px] h-[36px] bg-[#B5815B] rounded-[30px] shadow-xl align-middle;
+}
+
+.todo-list-container {
+  @apply rounded-[30px] bg-[#B5815B]/50 w-[80%] h-[90%] row-span-4 flex flex-col overflow-auto pt-5;
+}
+
+.todo-list-wrapper {
+  @apply rounded-[30px] w-[90%] mx-auto my-3 h-[15%] text-2xl bg-pink-500;
 }
 /* Rectangle 1 */
 

@@ -1,5 +1,5 @@
-.pomodoro-container {
-  @apply bg-[#F4C58D] rounded-[50px] col-span-1 mx-auto  w-[463px] h-[617px] shadow-xl;
+.content-container {
+  @apply bg-[#F4C58D] rounded-[50px] col-span-1 mx-auto justify-items-center w-[463px] h-[617px] shadow-xl;
 }
 
 .pomodoro-button {
@@ -14,7 +14,7 @@
   @apply bg-[#B5815B/100];
 }
 
-.pomodoro-title {
+.content-title {
   @apply text-[46px] font-bold text-center text-white italic drop-shadow-md;
 }
 

@@ -42,37 +42,44 @@ export const TodoForm = (props: TodoFormProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex-col">
-      <input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        className="todo-input"
-      />
-      <button type="submit" className="todo-input-button">
-        +
-      </button>
-      {props.todo.map((todo: any, index: number) => (
-        <div key={index} className="flex flex-row">
-          <button
-            onClick={() => handleCheck(todo.createdAt)}
-            className={`h-6 w-6 rounded-full shadow-xl ${
-              todo.complete ? "bg-green-200" : "bg-white"
-            } border-2 border-green-300 mb-2 ml-1 mr-2`}
-          ></button>
-          {!todo.complete ? (
-            <p className="">{todo.text}</p>
-          ) : (
-            <p className="text-gray-400">{todo.text}</p>
-          )}
-          <button
-            onClick={() => handleDelete(todo.createdAt)}
-            className="mb-2 ml-auto mr-3"
-          >
-            X
-          </button>
-        </div>
-      ))}
-    </form>
+    <div className="grid justify-items-center grid-rows-6 h-full">
+      <h1 className="content-title">TODO</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          className="todo-input"
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <button className="todo-input-button">
+          <p className="text-white font-bold text-[46px] leading-[0px] mb-2">
+            +
+          </p>
+        </button>
+      </form>
+      <div className="todo-list-container">
+        {props.todo.map((todo: any, index: number) => (
+          <div key={index} className="flex flex-row todo-list-wrapper">
+            <button
+              onClick={() => handleCheck(todo.createdAt)}
+              className={`h-6 w-6 rounded-full shadow-xl ${
+                todo.complete ? "bg-green-200" : "bg-white"
+              } border-2 border-green-300 mb-2 ml-1 mr-2`}
+            ></button>
+            {!todo.complete ? (
+              <p className="">{todo.text}</p>
+            ) : (
+              <p className="text-gray-400">{todo.text}</p>
+            )}
+            <button
+              onClick={() => handleDelete(todo.createdAt)}
+              className="mb-2 ml-auto mr-3"
+            >
+              X
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };

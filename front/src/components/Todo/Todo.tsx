@@ -25,7 +25,7 @@ export const Todo = () => {
   };
 
   return (
-    <div className="todo-container">
+    <div className="content-container">
       <TodoForm todo={todos} setTodos={setTodos} />
     </div>
   );

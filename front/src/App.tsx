@@ -2,7 +2,7 @@ import { Main } from "./components/Main";
 
 function App() {
   return (
-    <div className="App h-screen w-full">
+    <div className="bg-[#B5815B] h-full w-full">
       <Main />
     </div>
   );
