@@ -43,7 +43,7 @@ export const TodoForm = (props: TodoFormProps) => {
 
   return (
     <div className="grid justify-items-center grid-rows-6 h-full">
-      <h1 className="content-title">TODO</h1>
+      <h1 className="content-title">TODOS</h1>
       <form onSubmit={handleSubmit}>
         <input
           className="todo-input"
@@ -59,12 +59,17 @@ export const TodoForm = (props: TodoFormProps) => {
       </form>
       <div className="todo-list-container">
         {props.todo.map((todo: any, index: number) => (
-          <div key={index} className="flex flex-row todo-list-wrapper">
+          <div
+            key={index}
+            className={`flex flex-row todo-list-wrapper text-4xl pt-1  ${
+              todo.complete
+                ? "bg-highlight/30 text-[#977054]"
+                : "bg-dotory/30 text-[#754827]"
+            }`}
+          >
             <button
               onClick={() => handleCheck(todo.createdAt)}
-              className={`h-6 w-6 rounded-full shadow-xl ${
-                todo.complete ? "bg-green-200" : "bg-white"
-              } border-2 border-green-300 mb-2 ml-1 mr-2`}
+              className={`h-8 w-8 rounded-full shadow-xl mt-2 bg-dotory/70 ml-2 mr-2`}
             ></button>
             {!todo.complete ? (
               <p className="">{todo.text}</p>
@@ -73,7 +78,7 @@ export const TodoForm = (props: TodoFormProps) => {
             )}
             <button
               onClick={() => handleDelete(todo.createdAt)}
-              className="mb-2 ml-auto mr-3"
+              className="mb-2 ml-auto mr-3 text-2xl font-bold mt-1"
             >
               X
             </button>

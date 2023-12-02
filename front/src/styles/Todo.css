@@ -3,7 +3,7 @@
 }
 
 .todo-input-button {
-  @apply w-[46px] h-[36px] bg-[#B5815B] rounded-[30px] shadow-xl align-middle;
+  @apply w-[46px] h-[36px] bg-dotory rounded-[30px] shadow-xl align-middle;
 }
 
 .todo-list-container {
@@ -11,8 +11,9 @@
 }
 
 .todo-list-wrapper {
-  @apply rounded-[30px] w-[90%] mx-auto my-3 h-[15%] text-2xl bg-pink-500;
+  @apply rounded-[30px] w-[90%] mx-auto my-3 h-[15%] text-2xl;
 }
+
 /* Rectangle 1 */
 
 position: absolute;
