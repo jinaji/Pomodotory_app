@@ -6,9 +6,6 @@ export class PomodoEntity {
   id: number;
 
   @Column()
-  name: string;
-
-  @Column()
   pomodoro_num?: number;
 
   @Column()
@@ -20,3 +17,5 @@ export class PomodoEntity {
   @Column()
   cycle_num?: number;
 }
+
+// 25분 공부 -> 5분 휴식 * 4번 반복 -> 30분 휴식

@@ -5,7 +5,7 @@ export class TodoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 255, collation: 'utf8mb4_unicode_ci' })
   text: string;
 
   @Column()

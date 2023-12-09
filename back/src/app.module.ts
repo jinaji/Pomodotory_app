@@ -16,6 +16,7 @@ import { PomodosModule } from './pomodos/pomodos.module';
       database: 'pomodotory',
       synchronize: true,
       autoLoadEntities: true,
+      charset: 'utf8mb4',
     }),
     TodosModule,
     PomodosModule,
