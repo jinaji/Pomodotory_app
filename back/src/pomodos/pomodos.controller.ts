@@ -16,9 +16,9 @@ export class PomodosController {
   constructor(private readonly pomodosService: PomodosService) {}
 
   @Post()
-  create(@Body() createPomodoDto: CreatePomodoDto[]) {
+  create(@Param() name: string, @Body() createPomodoDto: CreatePomodoDto[]) {
     console.log('createPomodoDto', createPomodoDto);
-    return this.pomodosService.create(createPomodoDto);
+    return this.pomodosService.create(name, createPomodoDto);
   }
 
   @Get()
@@ -32,11 +32,8 @@ export class PomodosController {
   }
 
   @Patch(':string')
-  update(
-    @Param('string') string: string,
-    @Body() updatePomodoDto: UpdatePomodoDto,
-  ) {
-    return this.pomodosService.update(string, updatePomodoDto);
+  update(@Param('string') string: string, @Param() name: string) {
+    return this.pomodosService.update(name, string);
   }
 
   @Delete(':id')

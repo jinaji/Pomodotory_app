@@ -12,10 +12,16 @@ export class PomodosService {
     private pomodosRepository: Repository<PomodoEntity>,
   ) {}
 
-  create(createPomodoDto: CreatePomodoDto[]) {
-    const newPomodo = this.pomodosRepository.create(createPomodoDto);
-    this.pomodosRepository.save(newPomodo);
-    console.log(newPomodo);
+  async create(name: string, createPomodoDto: CreatePomodoDto[]) {
+    const newPomodos = createPomodoDto.map((dto) => {
+      const pomodo = this.pomodosRepository.create(dto);
+      pomodo.name = name;
+      return pomodo;
+    });
+
+    const savedPomodos = await this.pomodosRepository.save(newPomodos);
+    console.log(savedPomodos);
+
     return 'This action adds a new pomodo';
   }
 
@@ -27,23 +33,19 @@ export class PomodosService {
     return `This action returns a #${id} pomodo`;
   }
 
-  update(string: string, updatePomodoDto: UpdatePomodoDto) {
-    if (string === 'pomodoro') {
-      updatePomodoDto.pomodoro_num++;
+  async update(string: string, name: string) {
+    const pomodoToUpdate = await this.pomodosRepository.findOne({
+      where: { name: name },
+    });
+    if (string === 'pomo') {
+      pomodoToUpdate.pomodoro_num++;
     } else if (string === 'short') {
-      updatePomodoDto.short_break_num++;
+      pomodoToUpdate.short_break_num++;
     } else if (string === 'long') {
-      updatePomodoDto.long_break_num++;
+      pomodoToUpdate.long_break_num++;
     }
 
-    // if (
-    //   updatePomodoDto.pomodoro_num ===
-    //   this.pomodosRepository.findOne({ name: string }).short_break_num
-    // ) {
-    //   updatePomodoDto.cycle_num++;
-    // }
-
-    this.pomodosRepository.update(string, updatePomodoDto);
+    await this.pomodosRepository.update(string, pomodoToUpdate);
 
     return `This action updates a #${name} pomodo`;
   }
