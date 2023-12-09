@@ -16,9 +16,8 @@ export class PomodosController {
   constructor(private readonly pomodosService: PomodosService) {}
 
   @Post()
-  create(@Param() name: string, @Body() createPomodoDto: CreatePomodoDto[]) {
-    console.log('createPomodoDto', createPomodoDto);
-    return this.pomodosService.create(name, createPomodoDto);
+  create(@Param() name: string) {
+    return this.pomodosService.create(name);
   }
 
   @Get()

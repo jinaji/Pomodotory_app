@@ -12,16 +12,19 @@ export class PomodosService {
     private pomodosRepository: Repository<PomodoEntity>,
   ) {}
 
-  async create(name: string, createPomodoDto: CreatePomodoDto[]) {
-    const newPomodos = createPomodoDto.map((dto) => {
-      const pomodo = this.pomodosRepository.create(dto);
-      pomodo.name = name;
-      return pomodo;
-    });
-
-    const savedPomodos = await this.pomodosRepository.save(newPomodos);
-    console.log(savedPomodos);
-
+  async create(name: string) {
+    if (this.pomodosRepository.findOne({ where: { name: name } }) == null) {
+      const newPomodo = this.pomodosRepository.create({
+        name: name,
+        pomodoro_num: 0,
+        short_break_num: 0,
+        long_break_num: 0,
+        cycle_num: 0,
+      });
+      await this.pomodosRepository.save(newPomodo);
+    } else {
+      console.log(name + ' 은 이미 존재합니다.');
+    }
     return 'This action adds a new pomodo';
   }
 
