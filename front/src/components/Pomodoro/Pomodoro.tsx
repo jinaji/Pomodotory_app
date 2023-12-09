@@ -61,23 +61,22 @@ export const Pomodoro = () => {
 
   return (
     <div className="content-container">
-      <div className=" flex flex-col block">
+      <div className="grid justify-items-center grid-rows-5 h-full">
         <div>
           <h1 className="content-title">POMODOTORY</h1>
         </div>
 
-        <div className="time-section mx-auto">
-          <p className="time-to">Time to {work ? "work" : "rest"}</p>
-
-          <p className="timer text-center">
+        <div className="time-section mx-auto row-span-2">
+          <p className="time-to text-center">
+            Time to {work ? "work" : "rest"} !!
+          </p>
+          <p className="timer text-center pt-10">
             {Math.floor(time / 60) < 10
               ? `0${Math.floor(time / 60)}`
               : Math.floor(time / 60)}{" "}
             : {time % 60 < 10 ? `0${time % 60}` : time % 60}
           </p>
         </div>
-
-        {doneCycle()}
 
         <div className="button-section justify-items-stretch space-x-5 mx-auto">
           <button
@@ -99,6 +98,7 @@ export const Pomodoro = () => {
             Reset
           </button>
         </div>
+        {doneCycle()}
       </div>
     </div>
   );

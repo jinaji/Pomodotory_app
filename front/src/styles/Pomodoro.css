@@ -19,7 +19,7 @@
 }
 
 .time-to {
-  @apply italic text-[22px] font-bold text-white;
+  @apply italic text-3xl drop-shadow-md font-bold text-white;
 }
 
 .timer {
