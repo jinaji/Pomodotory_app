@@ -13,7 +13,7 @@ export class PomodosService {
   ) {}
 
   async create(name: string) {
-    console.log(name);
+    console.log('hihihihi ' + name);
     console.log(
       await this.pomodosRepository.findOne({ where: { name: name } }),
     );
@@ -28,6 +28,7 @@ export class PomodosService {
         cycle_num: 0,
       });
       await this.pomodosRepository.save(newPomodo);
+      console.log(name);
     } else {
       console.log(name + ' 은 이미 존재합니다.');
     }
