@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import "../../styles/Pomodoro.css";
 import { axiosInstance } from "../../axios";
 
-export const Pomodoro = () => {
+interface input {
+  input: string;
+}
+
+export const Pomodoro = (input: input) => {
   const [time, setTime] = useState(5);
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
   const [work, setWork] = useState(true);
@@ -32,9 +36,10 @@ export const Pomodoro = () => {
       setWork(!work);
       setRest(!rest);
       setTime(3);
-      alert("Time is up!");
+      // alert("Time is up!");
       setTimerId(null);
-      axiosInstance.patch("pomo");
+      console.log(input.input);
+      axiosInstance.patch("pomodos/pomo", { name: input.input });
     } else if (time <= 0 && timerId && rest) {
       clearInterval(timerId);
       setWork(!work);
@@ -43,7 +48,7 @@ export const Pomodoro = () => {
       setCycle([...cycle, "cycle"]);
       alert("Time is up!");
       setTimerId(null);
-      axiosInstance.patch("short");
+      axiosInstance.patch("pomodos/short", input.input);
     }
   }, [time]);
 

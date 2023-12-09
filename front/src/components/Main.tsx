@@ -39,7 +39,7 @@ export const Main = () => {
         </div>
       )}
       <div className="grid-cols-2 gird-rows-1 flex">
-        <Pomodoro />
+        <Pomodoro input={input} />
         <Todo />
       </div>
     </div>

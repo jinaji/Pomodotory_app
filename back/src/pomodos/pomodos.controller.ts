@@ -32,8 +32,9 @@ export class PomodosController {
   }
 
   @Patch(':string')
-  update(@Param('string') string: string, @Param() name: string) {
-    return this.pomodosService.update(name, string);
+  update(@Param('string') string: string, @Body() name: string) {
+    console.log(string, name);
+    return this.pomodosService.update({ string, name });
   }
 
   @Delete(':id')
