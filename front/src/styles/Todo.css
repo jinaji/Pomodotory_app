@@ -3,7 +3,7 @@
 }
 
 .todo-input-button {
-  @apply w-[46px] h-[36px] bg-dotory rounded-[30px] shadow-xl align-middle;
+  @apply w-[5rem] h-[36px] bg-dotory rounded-[30px] shadow-xl align-middle text-white font-bold;
 }
 
 .todo-list-container {

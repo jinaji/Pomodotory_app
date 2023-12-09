@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../../styles/Pomodoro.css";
+import { axiosInstance } from "../../axios";
 
 export const Pomodoro = () => {
   const [time, setTime] = useState(5);
@@ -33,6 +34,7 @@ export const Pomodoro = () => {
       setTime(3);
       alert("Time is up!");
       setTimerId(null);
+      axiosInstance.patch("pomo");
     } else if (time <= 0 && timerId && rest) {
       clearInterval(timerId);
       setWork(!work);
@@ -41,11 +43,20 @@ export const Pomodoro = () => {
       setCycle([...cycle, "cycle"]);
       alert("Time is up!");
       setTimerId(null);
+      axiosInstance.patch("short");
     }
   }, [time]);
 
   useEffect(() => {
     if (timerId !== null) return () => clearInterval(timerId);
+    // const newPomo = {
+    //   pomodoro_num: 0,
+    //   short_break_num: 0,
+    //   long_break_num: 0,
+    //   cycle_num: 0,
+    //   // id: 1,
+    // };
+    // axiosInstance.post("pomodos", newPomo);
   }, []);
 
   const doneCycle = () => {

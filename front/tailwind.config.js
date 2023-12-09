@@ -5,6 +5,7 @@ module.exports = {
     extend: {},
     colors: {
       dotory: "#B5815B",
+      subColor: "#F4C58D",
       white: "#FFFFFF",
       highlight: "#FAB754",
     },

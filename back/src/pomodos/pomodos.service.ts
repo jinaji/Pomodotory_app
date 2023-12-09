@@ -13,7 +13,13 @@ export class PomodosService {
   ) {}
 
   async create(name: string) {
-    if (!this.pomodosRepository.findOne({ where: { name: name } })) {
+    console.log(name);
+    console.log(
+      await this.pomodosRepository.findOne({ where: { name: name } }),
+    );
+    if (
+      (await this.pomodosRepository.findOne({ where: { name: name } })) === null
+    ) {
       const newPomodo = this.pomodosRepository.create({
         name: name,
         pomodoro_num: 0,

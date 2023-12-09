@@ -15,8 +15,9 @@ import { UpdatePomodoDto } from './dto/update-pomodo.dto';
 export class PomodosController {
   constructor(private readonly pomodosService: PomodosService) {}
 
-  @Post()
+  @Post(':name')
   create(@Param() name: string) {
+    console.log(name);
     return this.pomodosService.create(name);
   }
 

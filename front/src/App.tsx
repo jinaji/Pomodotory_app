@@ -2,7 +2,7 @@ import { Main } from "./components/Main";
 
 function App() {
   return (
-    <div className="bg-[#B5815B] h-full w-full">
+    <div className="bg-dotory h-full w-full">
       <Main />
     </div>
   );
