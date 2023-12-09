@@ -5,7 +5,7 @@ export class PomodoEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ collation: 'utf8mb4_unicode_ci' })
   name?: string;
 
   @Column()
