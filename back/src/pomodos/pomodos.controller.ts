@@ -33,11 +33,10 @@ export class PomodosController {
 
   @Patch(':string')
   update(
-    @Param('name') name: string,
     @Param('string') string: string,
     @Body() updatePomodoDto: UpdatePomodoDto,
   ) {
-    return this.pomodosService.update(name, string, updatePomodoDto);
+    return this.pomodosService.update(string, updatePomodoDto);
   }
 
   @Delete(':id')

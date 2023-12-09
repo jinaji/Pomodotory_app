@@ -27,7 +27,7 @@ export class PomodosService {
     return `This action returns a #${id} pomodo`;
   }
 
-  update(name: string, string: string, updatePomodoDto: UpdatePomodoDto) {
+  update(string: string, updatePomodoDto: UpdatePomodoDto) {
     if (string === 'pomodoro') {
       updatePomodoDto.pomodoro_num++;
     } else if (string === 'short') {
@@ -43,7 +43,7 @@ export class PomodosService {
     //   updatePomodoDto.cycle_num++;
     // }
 
-    this.pomodosRepository.update({ name: string }, updatePomodoDto);
+    this.pomodosRepository.update(string, updatePomodoDto);
 
     return `This action updates a #${name} pomodo`;
   }

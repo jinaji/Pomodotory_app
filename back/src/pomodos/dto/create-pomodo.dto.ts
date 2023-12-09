@@ -1,3 +1,1 @@
-export class CreatePomodoDto {
-  name: string;
-}
+export class CreatePomodoDto {}
