@@ -27,12 +27,24 @@ export class TodosService {
     this.todosRepository.findOne({ where: { id } });
   }
 
-  update(createdAt: number, updateTodoDto: UpdateTodoDto) {
-    if (updateTodoDto.complete === false) {
-      updateTodoDto.complete = true;
-    } else updateTodoDto.complete = false;
-    this.todosRepository.update({ createdAt }, updateTodoDto);
-    console.log(this.todosRepository.findOne({ where: { createdAt } }));
+  async update(createdAt: number, updateTodoDto: UpdateTodoDto) {
+    const todoToUpdate = await this.todosRepository.findOne({
+      where: { createdAt },
+    });
+
+    if (todoToUpdate) {
+      if (todoToUpdate.complete === undefined) {
+        todoToUpdate.complete = true;
+      } else if (todoToUpdate.complete === true) {
+        todoToUpdate.complete = false;
+      } else if (todoToUpdate.complete === false) {
+        todoToUpdate.complete = true;
+      }
+      await this.todosRepository.update({ createdAt }, todoToUpdate);
+      console.log(todoToUpdate);
+    } else {
+      console.log(`TodoEntity with createdAt ${createdAt} not found.`);
+    }
   }
 
   remove(createdAt: number) {
