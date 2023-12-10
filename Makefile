@@ -1,3 +1,5 @@
+# docker run -p 3000:3000 react(front image 이름)으로 실행해야 열림
+
 DOCKER_COMPOSE_FILE = ./docker-compose.yml
 DOCKER_COMPOSE = docker compose --file $(DOCKER_COMPOSE_FILE)
 
