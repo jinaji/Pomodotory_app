@@ -26,9 +26,9 @@ export class PomodosController {
     return this.pomodosService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pomodosService.findOne(+id);
+  @Get(':name')
+  findOne(@Param('name') name: string) {
+    return this.pomodosService.findOne(name);
   }
 
   @Patch(':string')

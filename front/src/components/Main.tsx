@@ -3,10 +3,25 @@ import { Pomodoro } from "./Pomodoro/Pomodoro";
 import { Todo } from "./Todo/Todo";
 import { axiosInstance } from "../axios";
 
+interface userDTO {
+  cycle_num: number;
+  id: number;
+  long_break_num: number;
+  name: string;
+  pomodoro_num: number;
+  short_break_num: number;
+}
+
 export const Main = () => {
   const [input, setInput] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState<userDTO>();
   const [isModalOpen, setIsModalOpen] = useState(true);
+  const [cycle, setCycle] = useState(0);
+
+  useEffect(() => {
+    console.log(user);
+    if (user) setCycle(user.short_break_num);
+  }, [user]);
 
   return (
     <div className="Main mx-auto my-auto">
@@ -25,10 +40,12 @@ export const Main = () => {
               ></input>
               <button
                 className="todo-input-button"
-                onClick={() => {
-                  console.log(input);
-                  axiosInstance.post(`pomodos/${input}`);
-                  setUser(input);
+                onClick={async () => {
+                  await axiosInstance.post(`pomodos/${input}`);
+                  await axiosInstance.get(`pomodos/${input}`).then((res) => {
+                    console.log(res.data);
+                    setUser(res.data);
+                  });
                   setIsModalOpen(false);
                 }}
               >
@@ -39,7 +56,7 @@ export const Main = () => {
         </div>
       )}
       <div className="grid-cols-2 gird-rows-1 flex">
-        <Pomodoro input={input} />
+        <Pomodoro input={input} cycle={cycle} />
         <Todo />
       </div>
     </div>

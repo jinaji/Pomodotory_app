@@ -35,20 +35,20 @@ export class PomodosService {
     return `This action returns all pomodos`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} pomodo`;
+  async findOne(data: { string: string; name: string } | any) {
+    const name = typeof data === 'string' ? data : data?.name;
+
+    return await this.pomodosRepository.findOne({
+      where: { name },
+    });
   }
 
   async update(data: { string: string; name: string } | any) {
-    const name = typeof data === 'string' ? data : data?.name;
-
-    console.log(name);
-
     const pomodoToUpdate = await this.pomodosRepository.findOne({
-      where: { name: name },
+      where: { name: data.name.name },
     });
 
-    console.log(pomodoToUpdate);
+    console.log('pomodoToUpdate.name: ' + pomodoToUpdate.name);
 
     if (data.string === 'pomo') {
       pomodoToUpdate.pomodoro_num++;
@@ -58,9 +58,9 @@ export class PomodosService {
       pomodoToUpdate.long_break_num++;
     }
 
-    await this.pomodosRepository.update(data.string, pomodoToUpdate);
+    await this.pomodosRepository.save(pomodoToUpdate);
 
-    return `This action updates a #${name} pomodo`;
+    return pomodoToUpdate;
   }
 
   remove(id: number) {

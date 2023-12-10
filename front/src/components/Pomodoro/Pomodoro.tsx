@@ -4,6 +4,7 @@ import { axiosInstance } from "../../axios";
 
 interface input {
   input: string;
+  cycle: number;
 }
 
 export const Pomodoro = (input: input) => {
@@ -11,7 +12,11 @@ export const Pomodoro = (input: input) => {
   const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
   const [work, setWork] = useState(true);
   const [rest, setRest] = useState(false);
-  const [cycle, setCycle] = useState<string[]>([]);
+  const [cycle, setCycle] = useState(0);
+
+  useEffect(() => {
+    setCycle(input.cycle);
+  }, [input.cycle]);
 
   const handleButton = (props: string) => {
     if (props === "start") {
@@ -45,10 +50,15 @@ export const Pomodoro = (input: input) => {
       setWork(!work);
       setRest(!rest);
       setTime(5);
-      setCycle([...cycle, "cycle"]);
       alert("Time is up!");
       setTimerId(null);
-      axiosInstance.patch("pomodos/short", input.input);
+      axiosInstance
+        .patch("pomodos/short", { name: input.input })
+        .then((res) => {
+          if (res.data) {
+            setCycle(res.data.short_break_num);
+          }
+        });
     }
   }, [time]);
 
@@ -65,15 +75,8 @@ export const Pomodoro = (input: input) => {
   }, []);
 
   const doneCycle = () => {
-    return cycle.map((item, key) => {
-      return (
-        <div className="bg-blue-100" key={key}>
-          참잘했어요
-        </div>
-      );
-    });
+    return <p className="text-white text-3xl font-bold"> Cycle: {cycle}</p>;
   };
-  console.log(time);
 
   return (
     <div className="content-container">
@@ -83,6 +86,9 @@ export const Pomodoro = (input: input) => {
         </div>
 
         <div className="time-section mx-auto row-span-2">
+          <h3 className="text-center font-bold text-dotory w-[10rem] mx-auto bg-white rounded-full text-2xl drop-shadow-md">
+            {input.input}
+          </h3>
           <p className="time-to text-center">
             Time to {work ? "work" : "rest"} !!
           </p>
