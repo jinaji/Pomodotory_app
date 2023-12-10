@@ -27,22 +27,16 @@ services:
   react-app:
     # 프론트 서비스
     image: gyumpark/pomodotory-react-app:latest
-    build: ./front
     ports:
       - "3000:3000"
-    volumes:
-      - ./front:/var/front
     networks:
       - gyumpark-network
 
   nestjs-app:
     # 백엔드 서비스
     image: gyumpark/pomodotory-nestjs-app:latest
-    build: ./back
     ports:
       - "4000:4000"
-    volumes:
-      - ./back:/var/back
     networks:
       - gyumpark-network
     depends_on:
