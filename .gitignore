@@ -1,0 +1,13 @@
+.DS_Store
+
+back/dist/
+back/node_modules
+back/package*.json
+back/tsconfig.json
+
+front/dist/
+front/node_modules
+front/package*.json
+front/tsconfig.json
+
+mysql/
