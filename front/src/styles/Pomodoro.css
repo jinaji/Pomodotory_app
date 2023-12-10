@@ -2,6 +2,10 @@
   @apply bg-[#F4C58D] rounded-[50px] col-span-1 mx-auto justify-items-center w-[463px] h-[617px] shadow-xl;
 }
 
+.pomodoro-wrapper {
+  @apply grid my-5 justify-items-center grid-rows-5 h-full;
+}
+
 .pomodoro-button {
   @apply bg-[#B5815B] w-[117px] h-[65px] text-2xl rounded-[30px] text-white font-bold;
 }
@@ -18,168 +22,30 @@
   @apply text-[46px] font-bold text-center text-white italic drop-shadow-md;
 }
 
+.time-section {
+  @apply mx-auto row-span-2;
+}
+
+.time-title-wrapper {
+  @apply text-center font-bold text-dotory w-[20vw] mx-auto rounded-full text-2xl drop-shadow-md;
+}
+
+.time-title {
+  @apply px-4 bg-white rounded-full whitespace-nowrap overflow-hidden overflow-ellipsis truncate;
+}
+
 .time-to {
-  @apply italic text-3xl drop-shadow-md font-bold text-white;
+  @apply italic text-3xl drop-shadow-md font-bold text-white text-center;
 }
 
 .timer {
-  @apply text-[90px] font-bold text-center text-white italic drop-shadow-md;
+  @apply text-center pt-10 text-[90px] font-bold text-center text-white italic drop-shadow-md;
 }
 
-/* START */
+.button-section {
+  @apply justify-items-stretch space-x-5 mx-auto;
+}
 
-position: absolute;
-left: 10.37%;
-right: 72.14%;
-top: 63.53%;
-bottom: 31.77%;
-
-font-family: "Inter";
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* PAUSE */
-
-position: absolute;
-left: 41.68%;
-right: 40.82%;
-top: 63.53%;
-bottom: 31.77%;
-
-font-family: "Inter";
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* SHORT REST */
-
-position: absolute;
-width: 153px;
-height: 23px;
-left: calc(50% - 153px / 2 - 24px);
-top: 167px;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 500;
-font-size: 22px;
-line-height: 27px;
-
-color: #ffffff;
-
-/* WORK */
-
-position: absolute;
-left: 10.37%;
-right: 75.16%;
-top: 27.07%;
-bottom: 68.56%;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 500;
-font-size: 22px;
-line-height: 27px;
-/* identical to box height */
-
-color: #ffffff;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-/* LONG REST */
-
-position: absolute;
-left: 62.85%;
-right: 10.37%;
-top: 27.07%;
-bottom: 68.56%;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 500;
-font-size: 22px;
-line-height: 27px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* STOP */
-
-position: absolute;
-left: 74.51%;
-right: 11.23%;
-top: 63.53%;
-bottom: 31.77%;
-
-font-family: "Inter";
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* DONE CYCLE: #1 */
-
-position: absolute;
-width: 196px;
-height: 29px;
-left: 133px;
-top: 492px;
-
-font-family: "Inter";
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* 25 : 00 */
-
-position: absolute;
-width: 311px;
-height: 109px;
-left: 76px;
-top: 229px;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 800;
-font-size: 90px;
-line-height: 109px;
-/* identical to box height */
-
-color: #ffffff;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-/* POMODOTORY */
-
-position: absolute;
-width: 343px;
-height: 56px;
-left: 60px;
-top: 66px;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 800;
-font-size: 46px;
-line-height: 56px;
-/* identical to box height */
-
-color: #ffffff;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.cycle {
+  @apply text-white text-3xl font-bold drop-shadow-md;
+}

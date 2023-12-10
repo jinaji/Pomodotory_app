@@ -16,7 +16,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.pomodoro-container {
-  @apply col-span-1 mx-auto absolute w-[463px] h-[617px] left-[115px] top-[108px] shadow-xl;
-}

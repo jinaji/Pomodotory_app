@@ -11,10 +11,6 @@ export interface TodoDTO {
 export const Todo = () => {
   const [todos, setTodos] = useState<TodoDTO[]>([]);
 
-  // axiosInstance.get("/todos").then((res) => {
-  //   setTodos(res.data);
-  // });
-
   useEffect(() => {
     fetchTodos();
   }, []);

@@ -17,9 +17,6 @@ export const TodoForm = (props: TodoFormProps) => {
     if (text === "") return;
     props.setTodos((prevTodos: any) => [...prevTodos, newTodo]);
     axiosInstance.post("/todos", newTodo);
-    // axiosInstance.get("/todos").then((res) => {
-    //   props.setTodos(res.data);
-    // });
     setText("");
   };
 
@@ -42,7 +39,7 @@ export const TodoForm = (props: TodoFormProps) => {
   };
 
   return (
-    <div className="grid justify-items-center grid-rows-6 h-full">
+    <div className="todo-wrapper">
       <h1 className="content-title">TODOS</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -52,16 +49,14 @@ export const TodoForm = (props: TodoFormProps) => {
           onChange={(e) => setText(e.target.value)}
         />
         <button className="todo-input-button">
-          <p className="text-white font-bold text-[46px] leading-[0px] mb-2">
-            +
-          </p>
+          <p className="todo-input-text">+</p>
         </button>
       </form>
       <div className="todo-list-container">
         {props.todo.map((todo: any, index: number) => (
           <div
             key={index}
-            className={`flex flex-row todo-list-wrapper text-4xl pt-1  ${
+            className={`todo-list-wrapper ${
               todo.complete
                 ? "bg-highlight/30 text-[#977054]"
                 : "bg-dotory/30 text-[#754827]"
@@ -69,16 +64,16 @@ export const TodoForm = (props: TodoFormProps) => {
           >
             <button
               onClick={() => handleCheck(todo.createdAt)}
-              className={`h-8 w-8 rounded-full shadow-xl mt-2 bg-dotory/70 ml-2 mr-2`}
+              className={"todo-check-button"}
             ></button>
             {!todo.complete ? (
               <p className="">{todo.text}</p>
             ) : (
-              <p className="text-gray-400">{todo.text}</p>
+              <p className="text-dotory">{todo.text}</p>
             )}
             <button
               onClick={() => handleDelete(todo.createdAt)}
-              className="mb-2 ml-auto mr-3 text-2xl font-bold mt-1"
+              className="todo-delete-button"
             >
               X
             </button>

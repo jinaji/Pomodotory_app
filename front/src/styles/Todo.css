@@ -1,3 +1,7 @@
+.todo-wrapper {
+  @apply grid justify-items-center grid-rows-6 h-full my-5;
+}
+
 .todo-input {
   @apply w-[315px] h-[35px] drop-shadow-xl rounded-full  bg-white/90 mx-3;
 }
@@ -6,224 +10,22 @@
   @apply w-[5rem] h-[36px] bg-dotory rounded-[30px] shadow-xl align-middle text-white font-bold;
 }
 
+.todo-input-text {
+  @apply text-white font-bold text-[46px] leading-[0px] mb-2;
+}
+
 .todo-list-container {
   @apply rounded-[30px] bg-[#B5815B]/50 w-[80%] h-[90%] row-span-4 flex flex-col overflow-auto pt-5;
 }
 
 .todo-list-wrapper {
-  @apply rounded-[30px] w-[90%] mx-auto my-3 h-[15%] text-2xl;
+  @apply rounded-[30px] w-[90%] mx-auto my-3 h-[15%] text-4xl pt-1 flex flex-row;
 }
 
-/* Rectangle 1 */
+.todo-check-button {
+  @apply h-8 w-8 rounded-full shadow-xl mt-2 bg-dotory/70 ml-2 mr-2;
+}
 
-position: absolute;
-width: 463px;
-height: 617px;
-left: 115px;
-top: 108px;
-
-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-/* Rectangle 1 */
-
-position: absolute;
-left: 0%;
-right: 0%;
-top: 0%;
-bottom: 0%;
-
-background: #f4c58d;
-mix-blend-mode: normal;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 50px;
-
-/* Rectangle 14 */
-
-position: absolute;
-left: 6.48%;
-right: 68.25%;
-top: 60.62%;
-bottom: 28.85%;
-
-background: rgba(181, 129, 91, 0.7);
-border-radius: 30px;
-
-/* Rectangle 15 */
-
-position: absolute;
-left: 37.8%;
-right: 36.93%;
-top: 60.62%;
-bottom: 28.85%;
-
-background: rgba(181, 129, 91, 0.7);
-border-radius: 30px;
-
-/* Rectangle 16 */
-
-position: absolute;
-left: 69.11%;
-right: 5.62%;
-top: 60.62%;
-bottom: 28.85%;
-
-background: rgba(181, 129, 91, 0.7);
-border-radius: 30px;
-
-/* START */
-
-position: absolute;
-left: 10.37%;
-right: 72.14%;
-top: 63.53%;
-bottom: 31.77%;
-
-font-family: "Inter";
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* PAUSE */
-
-position: absolute;
-left: 41.68%;
-right: 40.82%;
-top: 63.53%;
-bottom: 31.77%;
-
-font-family: "Inter";
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* SHORT REST */
-
-position: absolute;
-width: 153px;
-height: 23px;
-left: calc(50% - 153px / 2 - 24px);
-top: 167px;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 500;
-font-size: 22px;
-line-height: 27px;
-
-color: #ffffff;
-
-/* WORK */
-
-position: absolute;
-left: 10.37%;
-right: 75.16%;
-top: 27.07%;
-bottom: 68.56%;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 500;
-font-size: 22px;
-line-height: 27px;
-/* identical to box height */
-
-color: #ffffff;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-/* LONG REST */
-
-position: absolute;
-left: 62.85%;
-right: 10.37%;
-top: 27.07%;
-bottom: 68.56%;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 500;
-font-size: 22px;
-line-height: 27px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* STOP */
-
-position: absolute;
-left: 74.51%;
-right: 11.23%;
-top: 63.53%;
-bottom: 31.77%;
-
-font-family: "Inter";
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* DONE CYCLE: #1 */
-
-position: absolute;
-width: 196px;
-height: 29px;
-left: 133px;
-top: 492px;
-
-font-family: "Inter";
-font-style: normal;
-font-weight: 800;
-font-size: 24px;
-line-height: 29px;
-/* identical to box height */
-
-color: #ffffff;
-
-/* 25 : 00 */
-
-position: absolute;
-width: 311px;
-height: 109px;
-left: 76px;
-top: 229px;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 800;
-font-size: 90px;
-line-height: 109px;
-/* identical to box height */
-
-color: #ffffff;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-/* POMODOTORY */
-
-position: absolute;
-width: 343px;
-height: 56px;
-left: 60px;
-top: 66px;
-
-font-family: "Inter";
-font-style: italic;
-font-weight: 800;
-font-size: 46px;
-line-height: 56px;
-/* identical to box height */
-
-color: #ffffff;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.todo-delete-button {
+  @apply mb-2 ml-auto mr-3 text-2xl font-bold mt-1;
+}
