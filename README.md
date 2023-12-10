@@ -14,5 +14,5 @@ Docker Compose
 ### 재실행
 make re
 
-### 실행 초기화
+### 컨테이너 삭제
 make fclean
