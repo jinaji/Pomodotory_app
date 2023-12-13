@@ -1,6 +1,7 @@
 # Pomodotory_app
 
 ## 기술 스택
+- Typescript
 - React.js
 - NestJS
 - Docker
