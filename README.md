@@ -1,10 +1,10 @@
 # Pomodotory_app
 
 ## 기술 스택
-React.js
-NestJS
-Docker
-Docker Compose
+- React.js
+- NestJS
+- Docker
+- Docker Compose
 
 ## Program Preview
 <img width="1133" alt="image" src="https://github.com/gyuminv2/Pomodotory_app/assets/48640323/0cce58dd-a682-4759-b8e9-43a2df50615a">
