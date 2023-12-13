@@ -14,6 +14,7 @@ Docker Compose
 1. git clone https://github.com/gyuminv2/Pomodotory_app.git
 2. cd Pomodotory_app
 3. make
+4. localhost:3000
 
 ### 재실행
 make re
