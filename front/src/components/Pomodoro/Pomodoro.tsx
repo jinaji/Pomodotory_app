@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "../../styles/Pomodoro.css";
 import { axiosInstance } from "../../axios";
+import { PomodoroButton } from "./PomodoroButton";
+import { PomodoroTimerSetter } from "./PomodoroTimerSetter";
 
 interface input {
   input: string;
@@ -16,29 +18,6 @@ export const Pomodoro = (input: input) => {
   useEffect(() => {
     setCycle(input.cycle);
   }, [input.cycle]);
-
-  const handleButton = (props: string) => {
-    if (props === "start") {
-      if (timerId) return;
-      const interval = setInterval(() => {
-        setTime((prevTime) => prevTime - 1);
-      }, 1000);
-      setTimerId(interval);
-    } else if (props === "pause") {
-      if (timerId) {
-        clearInterval(timerId);
-        setTimerId(null);
-      }
-      return;
-    } else if (props === "reset") {
-      if (timerId) {
-        clearInterval(timerId);
-        setTimerId(null);
-      }
-      setTime(25 * 60);
-      return;
-    }
-  };
 
   useEffect(() => {
     if (time <= 0 && timerId && work) {
@@ -77,6 +56,7 @@ export const Pomodoro = (input: input) => {
 
         <div className="time-section">
           <div className="time-title-wrapper">
+            <PomodoroTimerSetter {...{ setTime }} />
             <p className="time-title">{input.input}</p>
           </div>
           <p className="time-to">Time to {work ? "work" : "rest"} !!</p>
@@ -88,26 +68,7 @@ export const Pomodoro = (input: input) => {
           </p>
         </div>
 
-        <div className="button-section">
-          <button
-            className="pomodoro-button"
-            onClick={() => handleButton("start")}
-          >
-            Start
-          </button>
-          <button
-            className="pomodoro-button"
-            onClick={() => handleButton("pause")}
-          >
-            Pause
-          </button>
-          <button
-            className="pomodoro-button"
-            onClick={() => handleButton("reset")}
-          >
-            Reset
-          </button>
-        </div>
+        <PomodoroButton {...{ setTime, setTimerId, timerId }} />
         <p className="cycle"> Cycle: {cycle}</p>
       </div>
     </div>

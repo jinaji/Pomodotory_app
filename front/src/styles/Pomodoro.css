@@ -49,3 +49,7 @@
 .cycle {
   @apply text-white text-3xl font-bold drop-shadow-md;
 }
+
+.time-to-select {
+  @apply text-white text-sm font-bold drop-shadow-md;
+}
